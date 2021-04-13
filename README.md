@@ -1,1 +1,2 @@
-# docker-compose
+# Решения для docker-compose на разные жизненные случаи
+
