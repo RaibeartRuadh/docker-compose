@@ -1,0 +1,53 @@
+version: '2'
+services:
+ 
+# Create Rabbit data foler /opt/rabbit-data
+# Create rabbit folder in docker-compose.yml directory
+# /opt/
+# ..../rabbit-data
+# ..../docker/docker-compose.yml
+# ..../docker/rabbit/Dockerfile
+#
+# Dockerfile
+# FROM rabbitmq:3.8.14-management
+# WORKDIR /opt/rabbit-data
+# RUN apt-get update && apt-get install mc -y
+# ADD rabbitmq_delayed_message_exchange-3.8.9-0199d11c.ez /opt/rabbitmq/plugins/rabbitmq_delayed_message_exchange-3.8.9-0199d11c.ez
+#  
+
+    rabbit:
+        restart: always
+        build: ./rabbit
+        container_name: rabbit
+        ports: 
+            - "4369:4369" 
+            - "5672:5672" 
+            #- "15672:15672"
+            - "8080:15672"  # GUI           
+            - "25672:25672" 
+            - "35197:35197"
+        networks:
+          sub_network:
+            ipv4_address: 172.10.1.2
+        environment:
+            - "RABBITMQ_USE_LONGNAME=true" 
+            - "RABBITMQ_DEFAULT_USER=myuser" 
+            - "RABBITMQ_DEFAULT_PASS=mypassword" 
+            - "RABBITMQ_LOGS=/var/log/rabbitmq/rabbit.log"
+            - "default_vhost=/"
+
+        volumes:
+            - /opt/rabbit-data/data:/var/lib/rabbitmq
+            - /opt/rabbit-data/data/logs:/var/log/rabbitmq
+
+
+networks:
+  sub_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.10.1.0/24
+        gateway: 172.10.1.1
+
+        
