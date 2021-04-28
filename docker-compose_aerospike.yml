@@ -1,0 +1,15 @@
+version: '2'
+services:
+   db:
+    aerospike:
+        restart: always
+        image: aerospike
+        container_name: aerospike
+        ports:
+            - "3000-3003:3000-3003"
+        volumes:
+            - /opt/aerospike:/opt/aerospike/etc
+
+
+
+
