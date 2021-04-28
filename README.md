@@ -11,4 +11,5 @@
 2. docker-compose_rabbitMQ.yml - пример развертывания брокера сообщений RabbitMQ с загрузкой модуля отложенных сообщений.
 3. docker-compose_postgresql.yml - пример развертывания на хосте postgresql 13.2
 4. docker-compose_wordpress.yml - пример развертывания системы wordpress включающей mysql:5.7 и сам wordpress
+5. docker-compose_aerospike.yml - пример развертывания системы aerospike
 
