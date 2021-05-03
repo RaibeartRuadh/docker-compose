@@ -1,0 +1,26 @@
+version: '2'
+services:
+    nginx:
+        restart: always
+        build: ./nginx
+        container_name: nginx
+        network_mode: "host"
+        ports:
+            - "80:80"
+            - "443:443"
+        depends_on: # В случае рестарта сервера, эти контейнеры поднимутся по порядку
+            - psql           
+            - mongodb
+        volumes:
+            - /var/log/nginx:/var/log/nginx
+            - /opt/www:/opt/www
+            - /opt/well-known:/opt/well-known
+            
+### Dockerfile at /opt/docker/nginx
+
+FROM nginx
+WORKDIR /opt/docker/nginx/
+ADD nginx.conf /etc/nginx/nginx.conf
+# ADD CERT
+ADD mycert.crt /home/mycert.crt
+ADD mycert.key /home/mycert.key
