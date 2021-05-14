@@ -12,5 +12,5 @@
 3. docker-compose_postgresql.yml - пример развертывания на хосте postgresql 13.2
 4. docker-compose_wordpress.yml - пример развертывания системы wordpress включающей mysql:5.7 и сам wordpress
 5. docker-compose_aerospike.yml - пример развертывания системы aerospike
-6. docker-compose_nginx.yml - пример развертывания nginx сервера. Дополнительно следует сделать Dockerfile в котором мы прописываем дополнительные условия (пути, сервтификаты, конфиг)
+6. docker-compose_nginx.yml - пример развертывания nginx сервера. Дополнительно следует сделать Dockerfile в котором мы прописываем дополнительные условия (пути, сертификаты, конфиг)
 
