@@ -13,4 +13,4 @@
 4. docker-compose_wordpress.yml - пример развертывания системы wordpress включающей mysql:5.7 и сам wordpress
 5. docker-compose_aerospike.yml - пример развертывания системы aerospike
 6. docker-compose_nginx.yml - пример развертывания nginx сервера. Дополнительно следует сделать Dockerfile в котором мы прописываем дополнительные условия (пути, сертификаты, конфиг)
-
+7. docker-compose_BitcoinCore.yml - пример развертывания ноды Биткоин, основнонной на образе kylemanna/bitcoind. Есть тестовая и основная конфигурация.  
