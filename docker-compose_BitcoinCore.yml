@@ -8,7 +8,7 @@ services:
         restart: always
         image: kylemanna/bitcoind
         command:
-          -printtoconsole -testnet=0 -onlynet=ipv4 -rpcbind=5.43.228.111 -rpcport=18332 -rpcpassword=YOUR_RPC_PASS -rpcuser=YOUR_RPC_LOGIN -server -deprecatedrpc=accounts -deprecatedrpc=addwitnessaddress -deprecatedrpc=signrawtransaction -deprecatedrpc=validateaddress -fallbackfee=0.00001 #-reindex-chainstate
+          -printtoconsole -testnet=0 -onlynet=ipv4 -rpcbind=X.XX.XXX.XXX -rpcport=18332 -rpcpassword=YOUR_RPC_PASS -rpcuser=YOUR_RPC_LOGIN -server -deprecatedrpc=accounts -deprecatedrpc=addwitnessaddress -deprecatedrpc=signrawtransaction -deprecatedrpc=validateaddress -fallbackfee=0.00001 #-reindex-chainstate
         ports:
           - "8333:8333"
           - "8332:8332"
