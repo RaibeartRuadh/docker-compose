@@ -1,0 +1,30 @@
+version: '2'
+services:
+## MAINNET
+#  -testnet=0
+# SET RPC LOGIN & PASSWORD 
+    bitcoin_mainnet:
+        container_name: bitcoin_mainnet
+        restart: always
+        image: kylemanna/bitcoind
+        command:
+          -printtoconsole -testnet=0 -onlynet=ipv4 -rpcbind=10.0.0.100 -rpcport=18332 -rpcpassword=YOUR_RPC_PASS -rpcuser=YOUR_RPC_LOGIN -server -deprecatedrpc=accounts -deprecatedrpc=addwitnessaddress -deprecatedrpc=signrawtransaction -deprecatedrpc=validateaddress -fallbackfee=0.00010 
+          #-reindex-chainstate
+        ports:
+          - "8333:8333"
+          - "8332:8332"
+        volumes:
+          - /root/.bitcoin:/bitcoin/.bitcoin
+
+## TESTNET
+#  -testnet=1
+# SET RPC LOGIN & PASSWORD 
+    bitcoin_testnet:
+        container_name: bitcoin_testnet
+        image: kylemanna/bitcoind
+        command: -printtoconsole -rpcport=18332 -testnet=1 -onlynet=ipv4 -rpcbind=0.0.0.0:18332 -rpcallowip=0.0.0.0/0 -rpcpassword=YOUR_RPC_PASS -rpcuser=YOUR_RPC_LOGIN -server -deprecatedrpc=accounts -deprecatedrpc=addwitnessaddress -deprecatedrpc=signrawtransaction -deprecatedrpc=validateaddress -fallbackfee=0.00010 #-reindex-chainstat
+        ports:
+          - "18333:18333"
+          - "18332:18332"
+        volumes:
+          - /root/.bitcoin:/bitcoin/.bitcoin
