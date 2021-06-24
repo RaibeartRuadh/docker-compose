@@ -14,3 +14,4 @@
 5. docker-compose_aerospike.yml - пример развертывания системы aerospike
 6. docker-compose_nginx.yml - пример развертывания nginx сервера. Дополнительно следует сделать Dockerfile в котором мы прописываем дополнительные условия (пути, сертификаты, конфиг)
 7. docker-compose_BitcoinCore.yml - пример развертывания ноды Биткоин, основнонной на образе kylemanna/bitcoind. Есть тестовая и основная конфигурация.  
+8. docker-compose_network.json - пример развертывания внутренней сети bridge
