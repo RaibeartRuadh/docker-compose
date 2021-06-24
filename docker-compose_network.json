@@ -10,7 +10,7 @@ services:
         image: postgres:13.2
         container_name: psql
         networks:
-          nebeus_network:
+          my_network:
             ipv4_address: 172.20.10.3
         volumes:
             - /opt/m4-psql:/var/lib/postgresql/data
@@ -31,13 +31,13 @@ services:
         volumes:
             - /opt/m4-mongodata2:/data/db
         networks:
-          nebeus_network:
+          my_network:
             ipv4_address: 172.20.10.3
 
 #### NETWORK #################################################
 networks:
   nebeus_network:
-    name: nebeus_network
+    name: my_network
     driver: bridge
     ipam:
       config:
