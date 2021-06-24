@@ -1,0 +1,46 @@
+version: '2.3'
+services:
+
+#### POSTGRESQL #############################################
+
+    psql:
+        restart: always
+        ports:
+            - "5432:5432"
+        image: postgres:13.2
+        container_name: psql
+        networks:
+          nebeus_network:
+            ipv4_address: 172.20.10.3
+        volumes:
+            - /opt/m4-psql:/var/lib/postgresql/data
+            - /opt/m4-psql:/var/log/postgresql
+        environment:
+            - POSTGRES_PASSWORD=password
+            - POSTGRES_USER=postgres
+			
+#### MONGODB #################################################
+
+    mongodb2:
+        restart: always
+        container_name: mongodb2
+        image: mongo:latest
+        environment:
+            - "MONGO_INITDB_ROOT_USERNAME=user"
+            - "MONGO_INITDB_ROOT_PASSWORD=passwo12rd"
+        volumes:
+            - /opt/m4-mongodata2:/data/db
+        networks:
+          nebeus_network:
+            ipv4_address: 172.20.10.3
+
+#### NETWORK #################################################
+networks:
+  nebeus_network:
+    name: nebeus_network
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.10.0/24
+          gateway: 172.20.10.2
+			
